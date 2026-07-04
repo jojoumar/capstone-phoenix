@@ -1,0 +1,52 @@
+name: TaskApp CI/CD
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  packages: write
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_BACKEND: ghcr.io/${{ github.repository_owner }}/taskapp-backend
+  IMAGE_FRONTEND: ghcr.io/${{ github.repository_owner }}/taskapp-frontend
+
+jobs:
+
+  validate:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: actions/checkout@v4
+
+      - uses: azure/setup-kubectl@v4
+
+      - name: Validate Kubernetes manifests
+        run: kubectl apply --dry-run=client -f manifests/
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Build skipped
+        run: |
+            echo "Using prebuilt images from GHCR."
+
+  update-manifests:
+
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Deployment handled by Argo CD
+        run: |
+          echo "GitOps repository already contains deployment manifests."
