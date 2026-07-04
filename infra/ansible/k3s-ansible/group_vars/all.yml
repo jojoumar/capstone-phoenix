@@ -1,0 +1,10 @@
+---
+k3s_version: v1.31.6+k3s1
+
+api_endpoint: "16.171.55.174"
+
+token: "K104663f0a19448a9dc1da9eab3c736af501fd3e96ccef1995dcb2ce63bbd74f08c::server:9e7783cbe43ef2a025db003d9cc73619"
+
+extra_server_args: >
+  --tls-san=16.171.55.174
+  --write-kubeconfig-mode=644
