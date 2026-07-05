@@ -43,29 +43,29 @@ spec:
         - containerPort: 5000
 
         env:
+        - name: DATABASE_HOST
+          value: postgres
 
-        - name: DATABASE_URL
+        - name: DATABASE_PORT
+          value: "5432"
+
+        - name: DATABASE_NAME
+          value: taskapp
+
+        - name: DATABASE_USER
           valueFrom:
-            configMapKeyRef:
-              name: backend-config
-              key: DATABASE_URL
+            secretKeyRef:
+              name: backend-secret
+              key: DATABASE_USER
+
+        - name: DATABASE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: DATABASE_PASSWORD
 
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:
               name: backend-secret
               key: SECRET_KEY
-
-        readinessProbe:
-          httpGet:
-            path: /api/health
-            port: 5000
-
-          initialDelaySeconds: 10
-
-        livenessProbe:
-          httpGet:
-            path: /api/health
-            port: 5000
-
-          initialDelaySeconds: 20

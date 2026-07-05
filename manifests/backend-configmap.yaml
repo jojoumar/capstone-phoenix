@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-
-metadata:
-  name: backend-config
-  namespace: taskapp
-
-data:
-  DATABASE_URL: postgresql://taskapp:taskapp123@postgres:5432/taskapp

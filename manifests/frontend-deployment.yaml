@@ -23,7 +23,7 @@ spec:
         image: ghcr.io/ts-a-devops/taskapp-frontend:26da2b0
 
         ports:
-        - containerPort: 5173
+        - containerPort: 80
 
         envFrom:
         - configMapRef:
@@ -40,13 +40,13 @@ spec:
         readinessProbe:
           httpGet:
             path: /
-            port: 5173
+            port: 80
           initialDelaySeconds: 10
           periodSeconds: 10
 
         livenessProbe:
           httpGet:
             path: /
-            port: 5173
+            port: 80
           initialDelaySeconds: 20
           periodSeconds: 20

@@ -5,40 +5,48 @@ metadata:
   name: taskapp
   namespace: taskapp
 
-spec:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 
+spec:
   ingressClassName: traefik
 
+  tls:
+    - hosts:
+        - helloisthisjojo.shop
+      secretName: taskapp-tls
+
   rules:
+    - host: helloisthisjojo.shop
 
-  - http:
+      http:
 
-      paths:
+        paths:
 
-      - path: /
+        - path: /
 
-        pathType: Prefix
+          pathType: Prefix
 
-        backend:
+          backend:
 
-          service:
+            service:
 
-            name: frontend
+              name: frontend
 
-            port:
+              port:
 
-              number: 80
+                number: 80
 
-      - path: /api
+        - path: /api
 
-        pathType: Prefix
+          pathType: Prefix
 
-        backend:
+          backend:
 
-          service:
+            service:
 
-            name: backend
+              name: backend
 
-            port:
+              port:
 
-              number: 5000
+                number: 5000
