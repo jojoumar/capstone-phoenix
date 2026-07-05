@@ -1,25 +1,32 @@
-# Cost (fill this in)
-
-This echoes the Docker lesson's "why one server" thread — except now the answer to "is the
-extra cost worth it?" is yours to argue.
-
 ## Monthly itemized cost
-| Item | Spec | Qty | $/mo |
-|---|---|---:|---:|
-| control-plane VM | … | 1 | … |
-| worker VMs | … | 2+ | … |
-| load balancer / elastic IP | … | … | … |
-| block storage (PVC) | … | … | … |
-| object storage (state, backups) | … | … | … |
-| DNS / domain | … | … | … |
-| **Total** | | | **$…** |
+|| Item          | Qty |           Cost |
+| ------------- | --: | -------------: |
+| Control Plane |   1 |            $16 |
+| Worker 1      |   1 |            $16 |
+| Worker 2      |   1 |            $16 |
+| EBS Storage   |   3 |             $3 |
+| Domain        |   1 |             $1 |
+| Total         |     | **≈$52/month** |
 
-## Compared to the single-server Compose+Portainer deploy
-- That stack cost roughly: $…
-- This cluster costs: $…
-- **What the extra spend buys** (be honest — tie to §0 of the brief): HA, autoscale,
-  zero-downtime, multi-node self-healing. When is it NOT worth it? …
+
+## Compared to Docker Compose
+Single VM:
+
+≈ $16/month
+
+Kubernetes cluster:
+
+≈ $52/month
+
+## What the extra money buys
+High Availability
+Automatic Scheduling
+Rolling Updates
+GitOps
+Self Healing
+Horizontal Scaling
+Persistent Storage
+Better fault tolerance
 
 ## How I'd halve this
-> One concrete paragraph: spot/preemptible workers? smaller control-plane? k3s on 2 nodes?
-> shared ingress? …
+For a development environment, I would reduce the worker nodes to one or use smaller t3.micro instances. Spot instances could also be used for workers to significantly reduce compute costs while retaining the Kubernetes architecture.
