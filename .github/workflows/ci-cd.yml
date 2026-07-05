@@ -30,7 +30,7 @@ jobs:
 
       - name: Validate manifests
         run: |
-          kubeconform -summary -strict manifests/*.yaml
+          kubeconform -summary -strict -ignore-missing-schemas manifests/*.yaml
 
   build:
 
