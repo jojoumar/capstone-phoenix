@@ -15,6 +15,12 @@
 
 ---
 
+## The Task App
+<img width="1920" height="1080" alt="Screenshot (60)" src="https://github.com/user-attachments/assets/7969d21c-6e51-4a88-9318-304d556bacd6" />
+<img width="1920" height="1080" alt="Screenshot (59)" src="https://github.com/user-attachments/assets/84793d06-9c69-47cf-aeb9-f514139e0f6c" />
+<img width="1920" height="1080" alt="Screenshot (61)" src="https://github.com/user-attachments/assets/d18ca141-db25-43a3-b24a-18d962639773" />
+
+
 ## 1. What you're given vs. what you build
 
 **Given (don't rebuild):**
